@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CORS Test</title>
 </head>
-<body style="background-color: Black;">
-    <h1 style="color: white; margin-left: 600px; font-size: 40px;">Cyb3r_C0re17</h1>
-    <h2 style="color: white; margin-left: 400px; font-size: 40px;">Bug bounty hunter and test for vulnerability</h2>
-    <h2 style="color: white; margin-left: 550px; font-size: 40px;">very soon i will report it.</h2>
-    <img src="17.png" alt="" width="800" height="450" style="margin-left:370px ;">
+<body>
+    <h1>Hello Team World</h1>
+    <p>Testing for CORS vulnerability.</p>
+
+    <script>
+        var req = new XMLHttpRequest();
+        req.open('GET', 'https://c1.staticsfly.com/asset/fetch/cs/PZN_FRAME-337076-4064-MERCHLARGE_FRONT/thumbnail.preview/v1', true);
+        req.withCredentials = true;
+        req.onload = function() {
+            if (req.status === 200) {
+                alert('CORS Vulnerability: Resource accessed!');
+            } else {
+                alert('Request failed or CORS not exploitable.');
+            }
+        };
+        req.send();
+    </script>
 </body>
 </html>
