@@ -10,17 +10,31 @@
     <p>Testing for CORS vulnerability.</p>
 
     <script>
-        var req = new XMLHttpRequest();
-        req.open('GET', 'https://c1.staticsfly.com/asset/fetch/cs/PZN_FRAME-337076-4064-MERCHLARGE_FRONT/thumbnail.preview/v1', true);
-        req.withCredentials = true;
-        req.onload = function() {
-            if (req.status === 200) {
-                alert('CORS Vulnerability: Resource accessed!');
+        // Create an XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Open a request to the target resource
+        xhr.open('GET', 'https://c1.staticsfly.com/asset/fetch/cs/PZN_FRAME-337076-4064-MERCHLARGE_FRONT/thumbnail.preview/v1', true);
+
+        // Indicate that credentials like cookies should be included
+        xhr.withCredentials = true;
+
+        // Handle the response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert('CORS Vulnerability: The image was accessed!');
             } else {
-                alert('Request failed or CORS not exploitable.');
+                alert('CORS test failed.');
             }
         };
-        req.send();
+
+        // Handle any errors that occur
+        xhr.onerror = function() {
+            alert('Request failed. CORS misconfiguration may not exist.');
+        };
+
+        // Send the request
+        xhr.send();
     </script>
 </body>
 </html>
